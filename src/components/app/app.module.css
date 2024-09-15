@@ -1,0 +1,39 @@
+.main {
+  padding: 120px 0 50px;
+  font-size: var(--font-lg);
+  color: var(--color-foreground-subtle);
+
+  & p {
+    &:not(:last-of-type) {
+      margin-bottom: 12px;
+    }
+
+    &.bold {
+      color: var(--color-foreground);
+    }
+
+    & span {
+      font-family: 'Courier New', monospace;
+      color: var(--color-foreground);
+    }
+  }
+}
+
+.divider {
+  width: 50px;
+  height: 1px;
+  background-color: var(--color-neutral-200);
+}
+
+.desc {
+  padding: 50px 0 120px;
+  font-size: var(--font-md);
+  line-height: 1.8;
+  color: var(--color-foreground-subtle);
+
+  & a {
+    color: var(--color-foreground);
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-foreground-subtler);
+  }
+}

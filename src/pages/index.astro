@@ -1,8 +1,8 @@
 ---
 import Layout from '@/layouts/layout.astro';
-import { Container } from '@/components/container';
+import { App } from '@/components/app';
 ---
 
 <Layout>
-  <Container><h1>Hello World</h1> </Container>
+  <App client:load />
 </Layout>

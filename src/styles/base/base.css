@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-serif);
   font-size: var(--font-base);
   color: var(--color-foreground);
   background-color: var(--color-neutral-50);
