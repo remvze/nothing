@@ -50,7 +50,7 @@ function AppComponent() {
 
   useEffect(() => {
     const handleUserInteraction = () => {
-      showSnackbar("Seems like you're doing something—let it go.");
+      showSnackbar('Catching you in motion—see if you can pause.');
     };
 
     window.addEventListener('scroll', handleUserInteraction);
