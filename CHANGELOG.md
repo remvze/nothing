@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/remvze/nothing/compare/v0.0.5...v0.0.6) (2024-09-15)
+
+
+### 💄 Styling
+
+* change message ([566fe6e](https://github.com/remvze/nothing/commit/566fe6e7957f89c9417b6fa6a4822f0c4c48097e))
+* change message ([33db166](https://github.com/remvze/nothing/commit/33db16663d4ec021edc76994ae3dd7823b867f19))
+
+
+### ✨ Features
+
+* change copy ([c952123](https://github.com/remvze/nothing/commit/c952123d9b6f6b7569472102de1765e0a63df7da))
+* reset timer on interaction ([25dd8aa](https://github.com/remvze/nothing/commit/25dd8aa75deb14321fe1f1927cc1194d456d9fa0))
+
 ### [0.0.5](https://github.com/remvze/nothing/compare/v0.0.4...v0.0.5) (2024-09-15)
 
 
