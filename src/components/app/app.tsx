@@ -56,6 +56,8 @@ export function App() {
   return (
     <Container>
       <div className={styles.main}>
+        <img alt="Nothing Logo" height={30} src="/logo.svg" width={30} />
+
         <p>Greetings, Stranger.</p>
         <p className={styles.bold}>
           Ease your mind.

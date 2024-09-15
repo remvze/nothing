@@ -3,6 +3,13 @@
   font-size: var(--font-lg);
   color: var(--color-foreground-subtle);
 
+  & img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 24px;
+  }
+
   & p {
     &:not(:last-of-type) {
       margin-bottom: 12px;
