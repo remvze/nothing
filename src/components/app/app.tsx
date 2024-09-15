@@ -1,14 +1,12 @@
-import { useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { Container } from '../container';
 import { useSnackbar, SnackbarProvider } from '@/contexts/snackbar';
 
-import { useLocalStorage } from '@/hooks/use-local-storage';
-
 import styles from './app.module.css';
 
 function AppComponent() {
-  const [activeTime, setActiveTime] = useLocalStorage('nothing-timer', 0);
+  const [activeTime, setActiveTime] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const showSnackbar = useSnackbar();
 
@@ -51,6 +49,10 @@ function AppComponent() {
   useEffect(() => {
     const handleUserInteraction = () => {
       showSnackbar('That’s definitely something—let’s try nothing.');
+
+      stopTimer();
+      setActiveTime(0);
+      startTimer();
     };
 
     window.addEventListener('scroll', handleUserInteraction);
