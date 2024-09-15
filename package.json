@@ -26,6 +26,7 @@
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "astro": "^4.2.1",
+    "framer-motion": "11.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "5.0.1"

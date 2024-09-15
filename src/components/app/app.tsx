@@ -1,14 +1,16 @@
 import { useRef, useEffect } from 'react';
 
 import { Container } from '../container';
+import { useSnackbar, SnackbarProvider } from '@/contexts/snackbar';
 
 import { useLocalStorage } from '@/hooks/use-local-storage';
 
 import styles from './app.module.css';
 
-export function App() {
+function AppComponent() {
   const [activeTime, setActiveTime] = useLocalStorage('nothing-timer', 0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const showSnackbar = useSnackbar();
 
   const startTimer = () => {
     if (intervalRef.current === null) {
@@ -45,6 +47,24 @@ export function App() {
       stopTimer();
     };
   }, []);
+
+  useEffect(() => {
+    const handleMouse = () => {
+      showSnackbar('Moving the mouse is doing something!');
+    };
+
+    const handleScroll = () => {
+      showSnackbar('Scrolling is doing something!');
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouse);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouse);
+    };
+  }, [showSnackbar]);
 
   const formatTime = (time: number, minLength: number = 3): string => {
     return time.toLocaleString('en-US', {
@@ -102,5 +122,13 @@ export function App() {
         .
       </p>
     </Container>
+  );
+}
+
+export function App() {
+  return (
+    <SnackbarProvider>
+      <AppComponent />
+    </SnackbarProvider>
   );
 }
