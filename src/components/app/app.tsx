@@ -49,20 +49,16 @@ function AppComponent() {
   }, []);
 
   useEffect(() => {
-    const handleMouse = () => {
-      showSnackbar('Moving the mouse is doing something!');
+    const handleUserInteraction = () => {
+      showSnackbar("Seems like you're doing something—let it go.");
     };
 
-    const handleScroll = () => {
-      showSnackbar('Scrolling is doing something!');
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouse);
+    window.addEventListener('scroll', handleUserInteraction);
+    window.addEventListener('mousemove', handleUserInteraction);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('mousemove', handleMouse);
+      window.removeEventListener('scroll', handleUserInteraction);
+      window.removeEventListener('mousemove', handleUserInteraction);
     };
   }, [showSnackbar]);
 
