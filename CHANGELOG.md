@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/remvze/nothing/compare/v0.0.4...v0.0.5) (2024-09-15)
+
+
+### 💄 Styling
+
+* change logo ([4e44b77](https://github.com/remvze/nothing/commit/4e44b77ad32f3d30ad9c2d1ee24d6d01ef3a5471))
+
 ### [0.0.4](https://github.com/remvze/nothing/compare/v0.0.3...v0.0.4) (2024-09-15)
 
 
