@@ -1,9 +1,0 @@
-.container {
-  width: 90%;
-  max-width: 550px;
-  margin: 0 auto;
-
-  &.wide {
-    max-width: 850px;
-  }
-}
