@@ -1,20 +1,32 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { Container } from '../container';
+
 import { useSnackbar, SnackbarProvider } from '@/contexts/snackbar';
+import { useLocalStorage } from '@/hooks/use-local-storage';
+import { cn } from '@/helpers/styles';
 
 import styles from './app.module.css';
 
 function AppComponent() {
   const [activeTime, setActiveTime] = useState(0);
+  const [totalTime, setTotalTime] = useLocalStorage('nothing-total', 0);
+  const [highScore, setHighScore] = useLocalStorage('nothing-high', 0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const showSnackbar = useSnackbar();
 
+  const tick = () => {
+    setActiveTime(prevActiveTime => {
+      const newActiveTime = prevActiveTime + 1;
+      setHighScore(prevHighScore => Math.max(newActiveTime, prevHighScore));
+      return newActiveTime;
+    });
+    setTotalTime(prevTotalTime => prevTotalTime + 1);
+  };
+
   const startTimer = () => {
     if (intervalRef.current === null) {
-      intervalRef.current = setInterval(() => {
-        setActiveTime(prevTime => prevTime + 1);
-      }, 1000);
+      intervalRef.current = setInterval(tick, 1000);
     }
   };
 
@@ -116,6 +128,12 @@ function AppComponent() {
           peculiar pleasure of simply being. Sometimes, the most profound act is
           to pause, breathe, and do nothing at all—a reminder that it&apos;s
           perfectly acceptable to embrace stillness and just... be.
+        </p>
+        <p className={cn(styles.mini, styles.noIndent)}>
+          <span className={styles.heading}>The pointless statistics:</span>
+          Your Highest: <span>{formatTime(highScore)}</span> second
+          {highScore !== 1 && 's'} — Total: <span>{formatTime(totalTime)}</span>{' '}
+          second{totalTime !== 1 && 's'}.
         </p>
         <p className={styles.noIndent}>
           Created by{' '}

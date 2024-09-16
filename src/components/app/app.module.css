@@ -48,6 +48,24 @@
       margin-bottom: 24px;
     }
 
+    &.mini {
+      font-size: var(--font-base);
+      color: var(--color-foreground-subtler);
+
+      & span:not(.heading) {
+        font-family: 'Courier New', monospace;
+        color: var(--color-foreground);
+      }
+
+      & .heading {
+        display: block;
+        margin-bottom: 4px;
+        font-family: var(--font-sans);
+        font-size: var(--font-sm);
+        color: var(--color-foreground-subtle);
+      }
+    }
+
     & a {
       color: var(--color-foreground);
       text-decoration-style: dotted;
