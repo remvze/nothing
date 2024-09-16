@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/remvze/nothing/compare/v0.0.6...v0.0.7) (2024-09-16)
+
+
+### ✨ Features
+
+* add stats ([6c1b8b1](https://github.com/remvze/nothing/commit/6c1b8b10e22bcde75e37ccee61df30cf964e1bb7))
+
 ### [0.0.6](https://github.com/remvze/nothing/compare/v0.0.5...v0.0.6) (2024-09-15)
 
 
