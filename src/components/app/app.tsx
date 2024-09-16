@@ -38,22 +38,25 @@ function AppComponent() {
   };
 
   useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        stopTimer();
-      } else {
+    const handleFocusChange = () => {
+      if (document.hasFocus()) {
         startTimer();
+      } else {
+        stopTimer();
+        setActiveTime(0);
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleFocusChange);
+    window.addEventListener('blur', handleFocusChange);
 
-    if (!document.hidden) {
+    if (document.hasFocus()) {
       startTimer();
     }
 
     return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleFocusChange);
+      window.removeEventListener('blur', handleFocusChange);
       stopTimer();
     };
   }, []);
@@ -69,10 +72,16 @@ function AppComponent() {
 
     window.addEventListener('scroll', handleUserInteraction);
     window.addEventListener('mousemove', handleUserInteraction);
+    window.addEventListener('mousedown', handleUserInteraction);
+    window.addEventListener('keypress', handleUserInteraction);
+    window.addEventListener('touchstart', handleUserInteraction);
 
     return () => {
       window.removeEventListener('scroll', handleUserInteraction);
       window.removeEventListener('mousemove', handleUserInteraction);
+      window.removeEventListener('mousedown', handleUserInteraction);
+      window.removeEventListener('keypress', handleUserInteraction);
+      window.removeEventListener('touchstart', handleUserInteraction);
     };
   }, [showSnackbar]);
 
