@@ -138,6 +138,13 @@ function AppComponent() {
           to pause, breathe, and do nothing at all—a reminder that it&apos;s
           perfectly acceptable to embrace stillness and just... be.
         </p>
+        <p className={styles.noIndent}>
+          Want to do something instead?{' '}
+          <a href="https://calmness.app/" rel="noreferrer" target="_blank">
+            Breathe
+          </a>
+          !
+        </p>
         <p className={cn(styles.mini, styles.noIndent)}>
           <span className={styles.heading}>The pointless statistics:</span>
           Your Highest: <span>{formatTime(highScore)}</span> second
