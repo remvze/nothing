@@ -140,7 +140,7 @@ function AppComponent() {
         </p>
         <p className={styles.noIndent}>
           Want to do something instead?{' '}
-          <a href="https://calmness.app/">Breathe</a>!
+          <a href="https://calmness.mvze.net/">Breathe</a>!
         </p>
         <p className={cn(styles.mini, styles.noIndent)}>
           <span className={styles.heading}>The pointless statistics:</span>
