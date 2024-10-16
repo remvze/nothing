@@ -5,6 +5,7 @@ import { Container } from '../container';
 import { useSnackbar, SnackbarProvider } from '@/contexts/snackbar';
 
 import styles from './nothing.module.css';
+import { cn } from '@/helpers/styles';
 
 function NothingComponent() {
   const [activeTime, setActiveTime] = useState(0);
@@ -90,7 +91,7 @@ function NothingComponent() {
   return (
     <div className={styles.wrapper}>
       <Container>
-        <div className={styles.nothing}>
+        <div className={cn(styles.nothing, activeTime > 5 && styles.passive)}>
           <p>Greetings, Stranger.</p>
           <p className={styles.bold}>
             Ease your mind.

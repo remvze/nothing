@@ -8,6 +8,11 @@
 .nothing {
   font-size: var(--font-lg);
   color: var(--color-foreground-subtle);
+  transition: 1s;
+
+  &.passive {
+    opacity: 0.5;
+  }
 
   & img {
     display: block;
