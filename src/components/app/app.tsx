@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Container } from '../container';
 
 import styles from './app.module.css';
 
 export function App() {
+  const [plan, setPlan] = useState('nothing');
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -16,9 +19,22 @@ export function App() {
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.field}>
             <label htmlFor="plan">What is your plan?</label>
-            <select id="plan">
-              <option>Do absolutely nothing.</option>
+            <select
+              id="plan"
+              value={plan}
+              onChange={e => setPlan(e.target.value)}
+            >
+              <option value="nothing">Do absolutely nothing.</option>
+              <option value="something">Do something.</option>
+              <option value="breathe">Breathe a little.</option>
             </select>
+            {plan === 'something' && <p>Sorry. Here we only do nothing.</p>}
+            {plan === 'breathe' && (
+              <p>
+                Sorry. Wrong website.{' '}
+                <a href="https://calmness.mvze.net">Click here</a>.
+              </p>
+            )}
           </div>
 
           <div className={styles.field}>
@@ -28,7 +44,9 @@ export function App() {
             </select>
           </div>
 
-          <button className={styles.button}>Start Doing Nothing</button>
+          <button className={styles.button} disabled={plan !== 'nothing'}>
+            Start Doing Nothing
+          </button>
         </form>
       </div>
 
