@@ -5,11 +5,13 @@ import styles from './app.module.css';
 
 export function App() {
   const [plan, setPlan] = useState('nothing');
+  const [forAmount, setForAmount] = useState(0);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    window.location.href = '/start';
+    if (forAmount > 0) window.location.href = `/start?for=${forAmount}`;
+    else window.location.href = '/start';
   };
 
   return (
@@ -28,6 +30,7 @@ export function App() {
               <option value="something">Do something.</option>
               <option value="breathe">Breathe a little.</option>
             </select>
+
             {plan === 'something' && <p>Sorry. Here we only do nothing.</p>}
             {plan === 'breathe' && (
               <p>
@@ -39,8 +42,18 @@ export function App() {
 
           <div className={styles.field}>
             <label htmlFor="time">For how long?</label>
-            <select id="time">
-              <option>I don&apos;t know.</option>
+            <select
+              id="time"
+              value={forAmount}
+              onChange={e => setForAmount(Number(e.target.value))}
+            >
+              <option value={0}>I don&apos;t know.</option>
+
+              {new Array(9999).fill(null).map((_, index) => (
+                <option key={index + 1} value={index + 1}>
+                  {(index + 1).toLocaleString()} minute{index + 1 !== 1 && 's'}
+                </option>
+              ))}
             </select>
           </div>
 
