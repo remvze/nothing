@@ -1,114 +1,35 @@
-import { useState, useRef, useEffect } from 'react';
-
 import { Container } from '../container';
-
-import { useSnackbar, SnackbarProvider } from '@/contexts/snackbar';
-import { useLocalStorage } from '@/hooks/use-local-storage';
-import { cn } from '@/helpers/styles';
 
 import styles from './app.module.css';
 
-function AppComponent() {
-  const [activeTime, setActiveTime] = useState(0);
-  const [totalTime, setTotalTime] = useLocalStorage('nothing-total', 0);
-  const [highScore, setHighScore] = useLocalStorage('nothing-high', 0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const showSnackbar = useSnackbar();
+export function App() {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-  const tick = () => {
-    setActiveTime(prevActiveTime => {
-      const newActiveTime = prevActiveTime + 1;
-      setHighScore(prevHighScore => Math.max(newActiveTime, prevHighScore));
-      return newActiveTime;
-    });
-    setTotalTime(prevTotalTime => prevTotalTime + 1);
-  };
-
-  const startTimer = () => {
-    if (intervalRef.current === null) {
-      intervalRef.current = setInterval(tick, 1000);
-    }
-  };
-
-  const stopTimer = () => {
-    if (intervalRef.current !== null) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
-  useEffect(() => {
-    const handleFocusChange = () => {
-      if (document.hasFocus()) {
-        startTimer();
-      } else {
-        stopTimer();
-        setActiveTime(0);
-      }
-    };
-
-    window.addEventListener('focus', handleFocusChange);
-    window.addEventListener('blur', handleFocusChange);
-
-    if (document.hasFocus()) {
-      startTimer();
-    }
-
-    return () => {
-      window.removeEventListener('focus', handleFocusChange);
-      window.removeEventListener('blur', handleFocusChange);
-      stopTimer();
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleUserInteraction = () => {
-      showSnackbar('That’s definitely something—let’s try nothing.');
-
-      stopTimer();
-      setActiveTime(0);
-      startTimer();
-    };
-
-    window.addEventListener('scroll', handleUserInteraction);
-    window.addEventListener('mousemove', handleUserInteraction);
-    window.addEventListener('mousedown', handleUserInteraction);
-    window.addEventListener('keypress', handleUserInteraction);
-    window.addEventListener('touchstart', handleUserInteraction);
-
-    return () => {
-      window.removeEventListener('scroll', handleUserInteraction);
-      window.removeEventListener('mousemove', handleUserInteraction);
-      window.removeEventListener('mousedown', handleUserInteraction);
-      window.removeEventListener('keypress', handleUserInteraction);
-      window.removeEventListener('touchstart', handleUserInteraction);
-    };
-  }, [showSnackbar]);
-
-  const formatTime = (time: number, minLength: number = 3): string => {
-    return time.toLocaleString('en-US', {
-      minimumIntegerDigits: minLength,
-      useGrouping: true,
-    });
+    window.location.href = '/start';
   };
 
   return (
     <Container>
       <div className={styles.main}>
         <img alt="Nothing Logo" height={30} src="/logo.svg" width={30} />
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <div className={styles.field}>
+            <label htmlFor="plan">What is your plan?</label>
+            <select id="plan">
+              <option>Do absolutely nothing.</option>
+            </select>
+          </div>
 
-        <p>Greetings, Stranger.</p>
-        <p className={styles.bold}>
-          Ease your mind.
-          <br />
-          Settle into silence.
-          <br />
-          And simply do nothing.
-        </p>
-        <p>
-          You&apos;ve been idle for <span>{formatTime(activeTime)}</span> second
-          {activeTime !== 1 && 's'}.
-        </p>
+          <div className={styles.field}>
+            <label htmlFor="time">For how long?</label>
+            <select id="time">
+              <option>I don&apos;t know.</option>
+            </select>
+          </div>
+
+          <button className={styles.button}>Start Doing Nothing</button>
+        </form>
       </div>
 
       <div className={styles.divider} />
@@ -139,16 +60,6 @@ function AppComponent() {
           perfectly acceptable to embrace stillness and just... be.
         </p>
         <p className={styles.noIndent}>
-          Want to do something instead?{' '}
-          <a href="https://calmness.mvze.net/">Breathe</a>!
-        </p>
-        <p className={cn(styles.mini, styles.noIndent)}>
-          <span className={styles.heading}>The pointless statistics:</span>
-          Your Highest: <span>{formatTime(highScore)}</span> second
-          {highScore !== 1 && 's'} — Total: <span>{formatTime(totalTime)}</span>{' '}
-          second{totalTime !== 1 && 's'}.
-        </p>
-        <p className={styles.noIndent}>
           Created by{' '}
           <a href="https://x.com/remvze" rel="noreferrer" target="_blank">
             Maze
@@ -166,13 +77,5 @@ function AppComponent() {
         </p>
       </div>
     </Container>
-  );
-}
-
-export function App() {
-  return (
-    <SnackbarProvider>
-      <AppComponent />
-    </SnackbarProvider>
   );
 }
