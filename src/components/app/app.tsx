@@ -49,12 +49,16 @@ export function App() {
             >
               <option value={0}>I don&apos;t know.</option>
 
-              {new Array(9999).fill(null).map((_, index) => (
+              {new Array(120).fill(null).map((_, index) => (
                 <option key={index + 1} value={index + 1}>
                   {(index + 1).toLocaleString()} minute{index + 1 !== 1 && 's'}
                 </option>
               ))}
+
+              <option value={9999}>9,999 minutes</option>
             </select>
+
+            {forAmount === 9999 && <p>Almost one week of nothing!</p>}
           </div>
 
           <button className={styles.button} disabled={plan !== 'nothing'}>
