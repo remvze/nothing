@@ -6,6 +6,7 @@
 }
 
 .nothing {
+  font-family: var(--font-serif);
   font-size: var(--font-lg);
   color: var(--color-foreground-subtle);
   transition: 1s;
@@ -38,6 +39,7 @@
 }
 
 .congrats {
+  font-family: var(--font-serif);
   font-size: var(--font-md);
   color: var(--color-foreground-subtle);
   text-align: center;
