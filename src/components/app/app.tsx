@@ -17,7 +17,12 @@ export function App() {
   return (
     <Container>
       <div className={styles.main}>
-        <img alt="Nothing Logo" height={30} src="/logo.svg" width={30} />
+        <div className={styles.hero}>
+          <img alt="Nothing Logo" height={30} src="/logo.svg" width={30} />
+          <h2>Nothing</h2>
+          <h1>... simply do nothing.</h1>
+        </div>
+
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.field}>
             <label htmlFor="plan">What is your plan?</label>
@@ -28,16 +33,9 @@ export function App() {
             >
               <option value="nothing">Do absolutely nothing.</option>
               <option value="something">Do something.</option>
-              <option value="breathe">Breathe a little.</option>
             </select>
 
             {plan === 'something' && <p>Sorry. Here we only do nothing.</p>}
-            {plan === 'breathe' && (
-              <p>
-                Sorry. Wrong website.{' '}
-                <a href="https://calmness.mvze.net">Click here</a>.
-              </p>
-            )}
           </div>
 
           <div className={styles.field}>
@@ -70,6 +68,7 @@ export function App() {
       <div className={styles.divider} />
 
       <div className={styles.desc}>
+        <h2>The Art of Doing Nothing.</h2>
         <p>
           Nothing—a timer that tracks your intentional choice to do... nothing.
           No goals to chase, no notifications clamoring for your attention, no

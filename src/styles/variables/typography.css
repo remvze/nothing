@@ -1,6 +1,7 @@
 :root {
   --font-serif: 'Crimson Text', serif;
   --font-sans: 'Inter', sans-serif;
+  --font-display: 'Instrument Serif', serif;
 
   /* Font Sizes */
   --font-base-size: 1rem;

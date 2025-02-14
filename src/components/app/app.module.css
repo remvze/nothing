@@ -1,12 +1,25 @@
 .main {
   padding: 120px 0 50px;
-  font-size: var(--font-lg);
   color: var(--color-foreground-subtle);
 
-  & img {
-    display: block;
-    width: 30px;
-    height: 30px;
+  & .hero {
+    & img {
+      display: block;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 16px;
+    }
+
+    & h2 {
+      font-family: var(--font-display);
+      font-size: var(--font-xlg);
+      color: var(--color-foreground);
+    }
+
+    & h1 {
+      margin-top: 4px;
+      color: var(--color-foreground-subtler);
+    }
   }
 
   & p {
@@ -16,27 +29,22 @@
   }
 
   & .form {
-    margin-top: 28px;
+    margin-top: 36px;
 
     & .field {
       margin-bottom: 20px;
 
       & p {
         margin-top: 8px;
-        font-size: var(--font-md);
+        font-size: var(--font-sm);
         color: var(--color-foreground);
-
-        & a {
-          color: var(--color-foreground);
-          text-decoration-style: dotted;
-          text-decoration-color: var(--color-foreground-subtler);
-        }
       }
 
       & label {
         display: block;
         margin-bottom: 8px;
-        font-size: var(--font-md);
+        font-size: var(--font-sm);
+        font-weight: 500;
       }
 
       & select {
@@ -45,10 +53,12 @@
         max-width: 350px;
         height: 45px;
         padding: 0 12px;
+        font-family: var(--font-serif);
         font-size: var(--font-md);
         color: var(--color-foreground);
         background-color: var(--color-neutral-50);
-        border: 2px solid var(--color-neutral-200);
+        border: 1px solid var(--color-neutral-300);
+        border-radius: 0;
       }
     }
 
@@ -57,11 +67,13 @@
       min-width: 0;
       max-width: 350px;
       height: 45px;
-      font-size: var(--font-md);
+      font-size: var(--font-sm);
+      font-weight: 500;
       color: var(--color-neutral-50);
       cursor: pointer;
       background-color: var(--color-neutral-950);
       border: none;
+      border-radius: 0;
 
       &:disabled {
         cursor: not-allowed;
@@ -80,8 +92,16 @@
 .desc {
   padding: 50px 0 120px;
 
+  & h2 {
+    margin-bottom: 24px;
+    font-family: var(--font-display);
+    font-size: var(--font-xlg);
+    color: var(--color-foreground);
+  }
+
   & p {
-    font-size: var(--font-md);
+    font-family: var(--font-serif);
+    font-size: var(--font-lg);
     line-height: 1.7;
     color: var(--color-foreground-subtle);
 
