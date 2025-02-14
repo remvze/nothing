@@ -1,3 +1,21 @@
+.overlay {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background-color: rgb(9 9 11);
+
+  &.top {
+    top: 0;
+    mask-image: linear-gradient(#000, transparent);
+  }
+
+  &.bottom {
+    bottom: 0;
+    mask-image: linear-gradient(transparent, #000);
+  }
+}
+
 .main {
   padding: 120px 0 50px;
   color: var(--color-foreground-subtle);
@@ -90,7 +108,7 @@
 }
 
 .desc {
-  padding: 50px 0 120px;
+  padding: 50px 0;
 
   & h2 {
     margin-bottom: 24px;
@@ -133,6 +151,39 @@
 
     & a {
       color: var(--color-foreground);
+      text-decoration-style: dotted;
+      text-decoration-color: var(--color-foreground-subtler);
+    }
+  }
+}
+
+.presets {
+  padding: 50px 0 120px;
+
+  & h3 {
+    margin-bottom: 16px;
+    font-family: var(--font-display);
+    font-size: var(--font-xlg);
+    color: var(--color-foreground);
+  }
+
+  & .preset {
+    &:not(:last-of-type) {
+      margin-bottom: 8px;
+    }
+
+    & span {
+      display: inline-block;
+      margin-right: 8px;
+      color: var(--color-foreground-subtler);
+      opacity: 0.6;
+    }
+
+    & a {
+      font-family: var(--font-serif);
+      font-size: var(--font-md);
+      color: var(--color-foreground-subtle);
+      text-decoration: underline;
       text-decoration-style: dotted;
       text-decoration-color: var(--color-foreground-subtler);
     }

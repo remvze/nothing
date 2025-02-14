@@ -7,7 +7,11 @@ import { useSnackbar, SnackbarProvider } from '@/contexts/snackbar';
 import styles from './nothing.module.css';
 import { cn } from '@/helpers/styles';
 
-function NothingComponent() {
+interface NothingProps {
+  seconds?: number;
+}
+
+function NothingComponent({ seconds }: NothingProps) {
   const [activeTime, setActiveTime] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const showSnackbar = useSnackbar();
@@ -17,6 +21,11 @@ function NothingComponent() {
   const left = useMemo(() => forAmount - activeTime, [forAmount, activeTime]);
 
   useEffect(() => {
+    if (seconds) {
+      setForAmount(seconds);
+      return;
+    }
+
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const forAmountParam = urlParams.get('for');
@@ -156,10 +165,10 @@ function NothingComponent() {
   );
 }
 
-export function Nothing() {
+export function Nothing({ seconds }: NothingProps) {
   return (
     <SnackbarProvider>
-      <NothingComponent />
+      <NothingComponent seconds={seconds} />
     </SnackbarProvider>
   );
 }

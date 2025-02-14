@@ -1,0 +1,17 @@
+---
+import Layout from '@/layouts/layout.astro';
+import { Nothing } from '@/components/nothing';
+
+export async function getStaticPaths() {
+  const minutes = [1, 2, 3, 4, 5, 10];
+
+  return minutes.map(minute => ({ params: { minute } }));
+}
+
+const { minute } = Astro.params;
+const seconds = minute * 60;
+---
+
+<Layout title={`Do Nothing for ${minute} Minute${minute === 1 ? '' : 's'}`}>
+  <Nothing client:load seconds={seconds} />
+</Layout>

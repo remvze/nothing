@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Container } from '../container';
 
 import styles from './app.module.css';
+import { cn } from '@/helpers/styles';
 
 export function App() {
   const [plan, setPlan] = useState('nothing');
@@ -14,8 +15,13 @@ export function App() {
     else window.location.href = '/start';
   };
 
+  const presets = [1, 2, 3, 4, 5, 10];
+
   return (
     <Container>
+      <div className={cn(styles.overlay, styles.top)} />
+      <div className={cn(styles.overlay, styles.bottom)} />
+
       <div className={styles.main}>
         <div className={styles.hero}>
           <img alt="Nothing Logo" height={30} src="/logo.svg" width={30} />
@@ -109,6 +115,20 @@ export function App() {
           </a>
           .
         </p>
+      </div>
+
+      <div className={styles.divider} />
+
+      <div className={styles.presets}>
+        <h3>Presets</h3>
+        {presets.map(preset => (
+          <div className={styles.preset} key={preset}>
+            <span>—</span>
+            <a href={`/start/${preset}`}>
+              Do nothing for {preset} minute{preset !== 1 && 's'}.
+            </a>
+          </div>
+        ))}
       </div>
     </Container>
   );
