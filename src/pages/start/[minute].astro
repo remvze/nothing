@@ -3,7 +3,7 @@ import Layout from '@/layouts/layout.astro';
 import { Nothing } from '@/components/nothing';
 
 export async function getStaticPaths() {
-  const minutes = [1, 2, 3, 4, 5, 10];
+  const minutes = [1, 2, 3, 4, 5, 10, 15, 20, 25, 30];
 
   return minutes.map(minute => ({ params: { minute } }));
 }

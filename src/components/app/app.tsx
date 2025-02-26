@@ -15,7 +15,7 @@ export function App() {
     else window.location.href = '/start';
   };
 
-  const presets = [1, 2, 3, 4, 5, 10];
+  const presets = [1, 2, 3, 4, 5, 10, 15, 20, 25, 30];
 
   return (
     <Container>
@@ -121,14 +121,14 @@ export function App() {
 
       <div className={styles.presets}>
         <h3>Presets</h3>
-        {presets.map(preset => (
-          <div className={styles.preset} key={preset}>
-            <span>—</span>
-            <a href={`/start/${preset}`}>
-              Do nothing for {preset} minute{preset !== 1 && 's'}.
+        <p>Do nothing for ...</p>
+        <div className={styles.wrapper}>
+          {presets.map(preset => (
+            <a className={styles.preset} href={`/start/${preset}`} key={preset}>
+              {preset} Minute{preset !== 1 && 's'}
             </a>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Container>
   );
